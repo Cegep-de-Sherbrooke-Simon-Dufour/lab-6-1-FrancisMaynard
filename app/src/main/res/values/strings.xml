@@ -4,4 +4,6 @@
     <string name="newUserEmail">Adresse courriel</string>
     <string name="addUser">Ajouter</string>
     <string name="cancelUser">Annuler</string>
+    <string name="UsersList">Liste des Utilisateurs</string>
+    <string name="AddNewUser">Ajouter un nouvel utilisateur</string>
 </resources>

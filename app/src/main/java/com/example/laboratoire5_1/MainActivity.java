@@ -7,6 +7,9 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
+import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -25,48 +28,26 @@ import dagger.hilt.android.AndroidEntryPoint;
 @AndroidEntryPoint
 public class MainActivity extends AppCompatActivity {
 
-    private String userName;
-    private String userEmail;
-    private UserAdapter adapter = new UserAdapter();
+    private NavController navController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //toolbar
 
-        UserListViewModel viewModel = new ViewModelProvider(this).get(UserListViewModel.class);
-        viewModel.getUsers().observe(this,new Observer<List<User>>() {
-            @Override
-            public void onChanged(List<User> users) {
-                adapter.submitList(new ArrayList<>(users));
-            }
-        });
-
-        RecyclerView recyclerView = findViewById(R.id.recyclerView_Users);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(adapter);
-        adapter.callback = (user) -> {
-            viewModel.deleteUser(user);
-        };
-
-        ActivityResultLauncher<Intent> _getUsersInfo = registerForActivityResult(
-                new ActivityResultContracts.StartActivityForResult(),
-                new ActivityResultCallback<ActivityResult>() {
-                    @Override
-                    public void onActivityResult(ActivityResult result) {
-                        if(result.getResultCode() == RESULT_OK) {
-                            Intent data = result.getData();
-                            userName = data.getStringExtra("newUserName");
-                            userEmail = data.getStringExtra("newUserEmail");
-                            viewModel.addUser(userName, userEmail);
-                        }
-                    }
-                });
-
-        FloatingActionButton goAddUser = findViewById(R.id.fltActBtn_goAddUser);
-        goAddUser.setOnClickListener(v -> {
-            Intent newUser = new Intent(MainActivity.this, new_user_infos.class);
-            _getUsersInfo.launch(newUser);
-        });
+        setSupportActionBar(findViewById(R.id.users_toolbar));
+        NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.fragmentContainerView);
+        if(navHostFragment != null){
+            navController = navHostFragment.getNavController();
+        }
+        NavigationUI.setupActionBarWithNavController(this, navController);
+    }
+    @Override
+    public boolean onSupportNavigateUp(){
+        navController.navigateUp();
+        return super.onSupportNavigateUp();
     }
 }
+
