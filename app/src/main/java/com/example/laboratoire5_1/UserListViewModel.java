@@ -3,6 +3,9 @@ package com.example.laboratoire5_1;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.laboratoire5_1.data.User;
+import com.example.laboratoire5_1.data.UserRepository;
+
 import java.util.List;
 
 import javax.inject.Inject;

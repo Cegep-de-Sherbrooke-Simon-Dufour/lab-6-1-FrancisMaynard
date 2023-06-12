@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/usersList_Fragment"
-        android:name="com.example.laboratoire5_1.UsersList_Fragment"
+        android:name="com.example.laboratoire5_1.ui.UsersList_Fragment"
         android:label="@string/UsersList"
         tools:layout="@layout/fragment_users_list_">
         <action
@@ -21,7 +21,7 @@
     </fragment>
     <fragment
         android:id="@+id/addNewUser_Fragment"
-        android:name="com.example.laboratoire5_1.AddNewUser_Fragment"
+        android:name="com.example.laboratoire5_1.ui.AddNewUser_Fragment"
         android:label="@string/AddNewUser"
         tools:layout="@layout/fragment_add_new_user_" />
 </navigation>
