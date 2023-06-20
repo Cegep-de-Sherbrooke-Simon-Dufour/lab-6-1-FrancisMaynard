@@ -31,8 +31,6 @@ public class UserAdapter extends ListAdapter<User, UserAdapter.UserViewHolder> {
         });
     }
 
-
-
     @NonNull
     @Override
     public UserViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
@@ -65,6 +63,5 @@ public class UserAdapter extends ListAdapter<User, UserAdapter.UserViewHolder> {
             email_textview.setText(user.getEmail());
             this.user = user;
         }
-
     }
 }

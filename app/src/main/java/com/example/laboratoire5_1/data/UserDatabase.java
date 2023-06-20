@@ -3,7 +3,7 @@ package com.example.laboratoire5_1.data;
 import androidx.room.Database;
 import androidx.room.RoomDatabase;
 
-@Database(entities = {User.class}, version = 1)
+@Database(entities = {User.class, Rental.class}, version = 3)
 public abstract class UserDatabase extends RoomDatabase {
     public abstract UserDao getUsersDao();
 }

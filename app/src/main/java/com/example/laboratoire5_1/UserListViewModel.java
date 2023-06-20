@@ -3,10 +3,12 @@ package com.example.laboratoire5_1;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.laboratoire5_1.data.Rental;
 import com.example.laboratoire5_1.data.User;
 import com.example.laboratoire5_1.data.UserRepository;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -24,12 +26,21 @@ public class UserListViewModel extends ViewModel {
     public LiveData<List<User>> getUsers(){
         return userRepository.getLiveDataUsers();
     }
-
     public void addUser(String name, String email){
         userRepository.addUser(new User(name, email));
     }
+    public void deleteUser(String email){
+        userRepository.deleteUser(email);
+    }
 
-    public void deleteUser(User user){
-        userRepository.deleteUser(user);
+    public LiveData<List<Rental>> getRentals(String userEmail){
+        return userRepository.getRentals(userEmail);
+    }
+    public void addRental(String userEmail, String newRentalName){
+
+        userRepository.addRental(new Rental(userEmail, newRentalName));
+    }
+    public void deleteRental (Rental rental){
+        userRepository.deleteRental(rental);
     }
 }

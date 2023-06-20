@@ -1,5 +1,6 @@
 package com.example.laboratoire5_1.data;
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -9,11 +10,12 @@ import java.util.Objects;
 @Entity
 public class User implements Serializable{
 
-    @PrimaryKey(autoGenerate = true)
-    public int userId;
+    @PrimaryKey
+    @NonNull
+    public String email;
     private String name;
-    private String email;
-    public User(String name, String email) {
+
+    public User(String name, @NonNull String email) {
         this.name = name;
         this.email = email;
     }
@@ -22,6 +24,7 @@ public class User implements Serializable{
         return name;
     }
 
+    @NonNull
     public String getEmail() {
         return email;
     }

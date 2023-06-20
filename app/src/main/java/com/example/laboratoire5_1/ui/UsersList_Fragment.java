@@ -25,8 +25,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UsersList_Fragment extends Fragment {
-    private String userName;
-    private String userEmail;
     private UserAdapter adapter = new UserAdapter();
 
     @Override
@@ -48,17 +46,21 @@ public class UsersList_Fragment extends Fragment {
             }
         });
 
+
+
         RecyclerView recyclerView = view.findViewById(R.id.users_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
         adapter.callback = (user) -> {
-            viewModel.deleteUser(user);
+            Bundle bundle = new Bundle();
+            bundle.putString("userName", user.getName());
+            bundle.putString("userEmail", user.getEmail());
+            Navigation.findNavController(view).navigate(R.id.action_usersList_Fragment_to_rentalsList_Fragment, bundle);
         };
 
         FloatingActionButton goAddUser = view.findViewById(R.id.fab_goToAddNewUser);
         goAddUser.setOnClickListener(v -> {
             Navigation.findNavController(view).navigate(R.id.action_usersList_Fragment_to_addNewUser_Fragment);
         });
-
     }
 }

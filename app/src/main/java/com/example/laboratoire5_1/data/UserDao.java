@@ -9,6 +9,7 @@ import androidx.room.Query;
 import com.example.laboratoire5_1.data.User;
 
 import java.util.List;
+import java.util.Map;
 
 @Dao
 public interface UserDao {
@@ -19,7 +20,16 @@ public interface UserDao {
     @Insert
     void insertUser (User user);
 
+    @Query("DELETE FROM User WHERE email = :email")
+    void deleteUser(String email);
+
+    @Query("SELECT * FROM Rental WHERE userEmail = :userEmail")
+    public LiveData<List<Rental>> loadUserAndRentals(String userEmail);
+
+    @Insert
+    void insertRental (Rental rental);
+
     @Delete
-    void deleteUser(User user);
+    void deleteRental (Rental rental);
 }
 
