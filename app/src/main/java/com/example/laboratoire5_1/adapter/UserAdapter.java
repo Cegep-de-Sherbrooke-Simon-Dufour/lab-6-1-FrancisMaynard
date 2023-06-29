@@ -1,4 +1,4 @@
-package com.example.laboratoire5_1;
+package com.example.laboratoire5_1.adapter;
 
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +10,9 @@ import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
+import com.example.laboratoire5_1.R;
+import com.example.laboratoire5_1.RecyclerViewCallback;
+import com.example.laboratoire5_1.data.User;
 
 public class UserAdapter extends ListAdapter<User, UserAdapter.UserViewHolder> {
 
@@ -58,7 +60,6 @@ public class UserAdapter extends ListAdapter<User, UserAdapter.UserViewHolder> {
                 callback.returnValue(user);
             });
         }
-
         public void bind(User user) {
             name_textview.setText(user.getName());
             email_textview.setText(user.getEmail());
