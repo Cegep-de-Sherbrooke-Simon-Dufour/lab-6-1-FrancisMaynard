@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Laboratoire5_1</string>
+    <string name="newUserName">Nom</string>
+    <string name="newUserEmail">Adresse courriel</string>
+    <string name="addUser">Ajouter</string>
+    <string name="cancelUser">Annuler</string>
+    <string name="UsersList">Liste des Utilisateurs</string>
+    <string name="AddNewUser">Ajouter un nouvel utilisateur</string>
+    <string name="deleteUser">Supprimer</string>
+    <string name="addRental">Ajouter</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/users_navigation"
+    app:startDestination="@id/usersList_Fragment">
+
+    <fragment
+        android:id="@+id/usersList_Fragment"
+        android:name="com.example.laboratoire5_1.ui.UsersList_Fragment"
+        android:label="@string/UsersList"
+        tools:layout="@layout/fragment_users_list_">
+        <action
+            android:id="@+id/action_usersList_Fragment_to_addNewUser_Fragment"
+            app:destination="@id/addNewUser_Fragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/addNewUser_Fragment" />
+        <action
+            android:id="@+id/action_usersList_Fragment_to_rentalsList_Fragment"
+            app:destination="@id/rentalsList_Fragment"
+            app:popUpTo="@id/usersList_Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addNewUser_Fragment"
+        android:name="com.example.laboratoire5_1.ui.AddNewUser_Fragment"
+        android:label="@string/AddNewUser"
+        tools:layout="@layout/fragment_add_new_user_" />
+    <fragment
+        android:id="@+id/rentalsList_Fragment"
+        android:name="com.example.laboratoire5_1.ui.RentalsList_Fragment"
+        android:label="Location"
+        tools:layout="@layout/fragment_rental" >
+        <argument
+            android:name="userEmail"
+            app:argType="string" />
+        <argument
+            android:name="userName"
+            app:argType="string" />
+    </fragment>
+</navigation>
